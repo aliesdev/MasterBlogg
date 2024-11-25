@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Application", "MB.Applic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Infrastructure.EfCore", "MB.Infrastructure.EfCore\MB.Infrastructure.EfCore.csproj", "{3B73051B-2B4E-4746-BCFE-B7A5C772354F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.Presentation.Razor", "MB.Presentation.Razor\MB.Presentation.Razor.csproj", "{DA5D8C79-B69E-4CE6-8D4A-EE8C297E1E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB.Presentation.Razor", "MB.Presentation.Razor\MB.Presentation.Razor.csproj", "{DA5D8C79-B69E-4CE6-8D4A-EE8C297E1E88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
