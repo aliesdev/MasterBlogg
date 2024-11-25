@@ -27,4 +27,10 @@ public class ArticleRepository: IArticleRepository
 
         }).ToList();
     }
+
+    public void CreateAndSave(Article article)
+    {
+        context.Articles.Add(article);
+        context.SaveChanges();
+    }
 }

@@ -18,13 +18,13 @@ public class Article
     {
     }
 
-    public Article(string title, string shortDescription, string image, string content, ArticleCategory articleCategory)
+    public Article(string title, string shortDescription, string image, string content, int articleCategoryId)
     {
         Title = title;
         ShortDescription = shortDescription;
         Image = image;
         Content = content;
-        ArticleCategory = articleCategory;
+        ArticleCategoryId = articleCategoryId;
         IsDeleted = false;
         CreationDate = DateTime.Now;
     }
