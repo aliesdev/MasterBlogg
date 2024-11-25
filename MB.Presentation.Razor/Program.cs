@@ -1,5 +1,7 @@
 using MB.Application;
+using MB.Application.Contracts.Article;
 using MB.Application.Contracts.ArticleCategory;
+using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleCategoryAgg;
 using MB.Domain.ArticleCategoryAgg.Services;
 using MB.Infrastructure.EfCore;
@@ -13,6 +15,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
 builder.Services.AddTransient<IArticleCategoryRepository, ArticleCategoryRepository>();
 builder.Services.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
+builder.Services.AddTransient<IArticleApplication, ArticleApplication>();
+builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
+// builder.Services.AddTransient<IArticleValidatorService, ArticleValidatorService>();
 
 var connectionString = builder.Configuration.GetConnectionString("MasterBlogger");
 builder.Services.AddDbContext<MasterBlogContext>(x => x.UseSqlServer(connectionString));
