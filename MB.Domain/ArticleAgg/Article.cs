@@ -28,4 +28,23 @@ public class Article
         IsDeleted = false;
         CreationDate = DateTime.Now;
     }
+
+    public void Edit(string title, string shortDescription, string image, string content, int articleCategoryI)
+    {
+        Title = title;
+        ShortDescription = shortDescription;
+        Image = image;
+        Content = content;
+        ArticleCategoryId = articleCategoryI;
+    }
+
+    public void Remove()
+    {
+        IsDeleted = true;
+    }
+
+    public void Activate()
+    {
+        IsDeleted = false;
+    }
 }

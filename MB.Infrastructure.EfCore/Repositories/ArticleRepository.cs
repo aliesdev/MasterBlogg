@@ -28,9 +28,19 @@ public class ArticleRepository: IArticleRepository
         }).ToList();
     }
 
+    public Article Get(int id)
+    {
+        return context.Articles.FirstOrDefault(x => x.Id == id);
+    }
+
     public void CreateAndSave(Article article)
     {
         context.Articles.Add(article);
+        Save();
+    }
+
+    public void Save()
+    {
         context.SaveChanges();
     }
 }

@@ -10,4 +10,8 @@
     <ProjectReference Include="..\MB.Application.Contracts\MB.Application.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ArticleAgg\Exception\" />
+  </ItemGroup>
+
 </Project>
