@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -27,6 +23,7 @@
     <ProjectReference Include="..\MB.Application.Contracts\MB.Application.Contracts.csproj" />
     <ProjectReference Include="..\MB.Application\MB.Application.csproj" />
     <ProjectReference Include="..\MB.Infrastructure.EfCore\MB.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\MB.Infrastructure.Query\MB.Infrastructure.Query.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,5 +7,6 @@ public interface IArticleRepository
     List<ArticleViewModel> GetAll();
     Article Get(int id);
     void CreateAndSave(Article article);
+    bool Exists(string title);
     void Save();
 }

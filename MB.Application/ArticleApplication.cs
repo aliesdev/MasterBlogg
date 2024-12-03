@@ -1,15 +1,19 @@
 ﻿using MB.Application.Contracts.Article;
 using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleAgg.Services;
+using MB.Domain.ArticleCategoryAgg.Services;
 
 namespace MB.Application;
 
 public class ArticleApplication : IArticleApplication
 {
     private readonly IArticleRepository articleRepository;
+    private readonly IArticleValidatorService articleValidatorService;
 
-    public ArticleApplication(IArticleRepository articleRepository)
+    public ArticleApplication(IArticleRepository articleRepository, IArticleValidatorService articleValidatorService)
     {
         this.articleRepository = articleRepository;
+        this.articleValidatorService = articleValidatorService;
     }
 
     public List<ArticleViewModel> GetList()
@@ -25,8 +29,9 @@ public class ArticleApplication : IArticleApplication
                 command.ShortDescription,
                 command.Image,
                 command.Content,
-                command.ArticleCategoryId)
-        );
+                command.ArticleCategoryId ,
+                articleValidatorService
+                ));
     }
 
     public void Edit(EditArticle command)

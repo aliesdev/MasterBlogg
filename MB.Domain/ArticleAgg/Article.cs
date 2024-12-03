@@ -1,4 +1,6 @@
-﻿using MB.Domain.ArticleCategoryAgg;
+﻿using MB.Domain.ArticleAgg.Services;
+using MB.Domain.ArticleCategoryAgg;
+using MB.Domain.ArticleCategoryAgg.Services;
 
 namespace MB.Domain.ArticleAgg;
 
@@ -18,8 +20,9 @@ public class Article
     {
     }
 
-    public Article(string title, string shortDescription, string image, string content, int articleCategoryId)
+    public Article(string title, string shortDescription, string image, string content, int articleCategoryId, IArticleValidatorService articleValidatorService)
     {
+        articleValidatorService.IsRecordExists(title);
         Title = title;
         ShortDescription = shortDescription;
         Image = image;
@@ -31,6 +34,7 @@ public class Article
 
     public void Edit(string title, string shortDescription, string image, string content, int articleCategoryI)
     {
+       
         Title = title;
         ShortDescription = shortDescription;
         Image = image;

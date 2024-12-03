@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Security.Cryptography
 @model MB.Presentation.Razor.Areas.Administrator.Pages.ArticleCategoryManagement.ListModel
 @{
 }
@@ -13,14 +14,15 @@
     <div class="card-body">
         <table class="table">
             <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>CreationDate</th>
-                    <th>Operations</th>
-                </tr>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>CreationDate</th>
+                <th>Operations</th>
+            </tr>
             </thead>
+            
             <tbody>
                 @foreach (var articleCategory in Model.ArticleCategories)
                 {
@@ -30,11 +32,14 @@
                         <td>
                             @if (articleCategory.IsDeleted)
                             {
-                                <i class="fa fa-close fa-2x text-danger"></i>
+                                @* <i class="fa fa-close fa-2x text-danger"></i> *@
+                                <h6 style="color: red">Deleted</h6>
+
                             }
                             else
                             {
-                                <i class="fa fa-check fa-2x text-success"></i>
+                                @* <i class="fa fa-check fa-2x text-success"></i> *@
+                                <h6 style="color: green">Active</h6>
                             }
                         </td>
                         <td>@articleCategory.CreationDate</td>

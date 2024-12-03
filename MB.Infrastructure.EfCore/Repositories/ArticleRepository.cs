@@ -39,6 +39,11 @@ public class ArticleRepository: IArticleRepository
         Save();
     }
 
+    public bool Exists(string title)
+    {
+        return context.Articles.Any(x => x.Title == title);
+    }
+
     public void Save()
     {
         context.SaveChanges();

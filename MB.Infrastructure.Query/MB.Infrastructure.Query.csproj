@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Comment\" />
+    <ProjectReference Include="..\MB.Infrastructure.EfCore\MB.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 
 </Project>

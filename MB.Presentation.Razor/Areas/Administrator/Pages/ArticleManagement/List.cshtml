@@ -27,17 +27,19 @@
                 <tr>
                     <td>@article.Id</td>
                     <td>@article.Title</td>
+                    <td>@article.ArticleCategory</td>
                     <td>
                         @if (article.IsDeleted)
                         {
-                            <i class="fa fa-close fa-2x text-danger"></i>
+                            @* <i class="fa fa-close fa-2x text-danger"></i> *@
+                            <h6 style="color: red">Deleted</h6>
                         }
                         else
                         {
-                            <i class="fa fa-check fa-2x text-success"></i>
+                            @* <i class="fa fa-check fa-2x text-success"></i> *@
+                            <h6 style="color: green">Active</h6>
                         }
                     </td>
-                    <td>@article.ArticleCategory</td>
                     <td>@article.CreationDate</td>
                     <td>
                         <a class="btn btn-warning float-left mr-3" asp-page="./Edit" asp-route-id="@article.Id">Edit</a>
@@ -45,14 +47,14 @@
                         {
                             <form method="post" asp-page-handler="Restore" class="float-left">
                                 <button class="btn btn-success">Activate</button>
-                                <input type="hidden" name="id" value="@article.Id"/>
+                                <input type="hidden" name="id" value="@article.Id" />
                             </form>
                         }
                         else
                         {
                             <form method="post" asp-page-handler="Remove" class="float-left">
                                 <button class="btn btn-danger">Remove</button>
-                                <input type="hidden" name="id" value="@article.Id"/>
+                                <input type="hidden" name="id" value="@article.Id" />
                             </form>
                         }
                     </td>
