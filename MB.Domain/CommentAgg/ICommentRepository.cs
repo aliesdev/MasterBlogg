@@ -1,6 +1,9 @@
-﻿namespace MB.Domain.CommentAgg;
+﻿using _01_Framework.Infrastructure;
+using MB.Application.Contracts.Comment;
 
-public interface ICommentRepository
+namespace MB.Domain.CommentAgg;
+
+public interface ICommentRepository : IRepository<int, Comment>
 {
-    
+    List<CommentViewModel> GetList();
 }

@@ -1,4 +1,5 @@
-﻿using MB.Application.Contracts.Article;
+﻿using _01_Framework.Infrastructure;
+using MB.Application.Contracts.Article;
 using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleAgg.Services;
 using MB.Domain.ArticleCategoryAgg.Services;
@@ -9,21 +10,24 @@ public class ArticleApplication : IArticleApplication
 {
     private readonly IArticleRepository articleRepository;
     private readonly IArticleValidatorService articleValidatorService;
+    private readonly IUnitOfWork unitOfWork;
 
-    public ArticleApplication(IArticleRepository articleRepository, IArticleValidatorService articleValidatorService)
+    public ArticleApplication(IArticleRepository articleRepository, IArticleValidatorService articleValidatorService, IUnitOfWork unitOfWork)
     {
         this.articleRepository = articleRepository;
         this.articleValidatorService = articleValidatorService;
+        this.unitOfWork = unitOfWork;
     }
 
     public List<ArticleViewModel> GetList()
     {
-        return articleRepository.GetAll();
+        return articleRepository.GetList();
     }
 
     public void Create(CreateArticle command)
     {
-        articleRepository.CreateAndSave(
+        unitOfWork.BeginTran();
+        articleRepository.Create(
             new Article(
                 command.Title,
                 command.ShortDescription,
@@ -32,10 +36,12 @@ public class ArticleApplication : IArticleApplication
                 command.ArticleCategoryId ,
                 articleValidatorService
                 ));
+        unitOfWork.CommitTran();
     }
 
     public void Edit(EditArticle command)
     {
+        unitOfWork.BeginTran();
         var article = articleRepository.Get(command.Id);
         article.Edit(
             command.Title,
@@ -44,7 +50,8 @@ public class ArticleApplication : IArticleApplication
             command.Content,
             command.ArticleCategoryId
         );
-        articleRepository.Save();
+        unitOfWork.CommitTran();
+
         
     }
 
@@ -64,15 +71,18 @@ public class ArticleApplication : IArticleApplication
 
     public void Remove(int id)
     {
+        unitOfWork.BeginTran();
         var article = articleRepository.Get(id);
         article.Remove();
-        articleRepository.Save();
+        unitOfWork.CommitTran();
+    
     }
 
     public void Activate(int id)
     {
+        unitOfWork.BeginTran();
         var article = articleRepository.Get(id);
         article.Activate();
-        articleRepository.Save();
+       unitOfWork.CommitTran();
     }
 }

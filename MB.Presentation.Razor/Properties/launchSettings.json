@@ -26,7 +26,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "launchUrl": "https://localhost:7292/administrator/articlecategorymanagement/list"
+      "launchUrl": "https://localhost:7292"
     },
     "IIS Express": {
       "commandName": "IISExpress",

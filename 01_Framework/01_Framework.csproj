@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>_01_Framework</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\01_Framework\01_Framework.csproj" />
-    <ProjectReference Include="..\MB.Application.Contracts\MB.Application.Contracts.csproj" />
+    <Folder Include="Domain\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ArticleAgg\Exception\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
   </ItemGroup>
 
 </Project>

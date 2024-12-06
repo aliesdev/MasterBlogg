@@ -1,20 +1,21 @@
 ﻿using System.Globalization;
+using _01_Framework.Infrastructure;
 using MB.Application.Contracts.Article;
 using MB.Domain.ArticleAgg;
 using Microsoft.EntityFrameworkCore;
 
 namespace MB.Infrastructure.EfCore.Repositories;
 
-public class ArticleRepository: IArticleRepository
+public class ArticleRepository : BaseRepository<int, Article>, IArticleRepository
 {
     private readonly MasterBlogContext context;
 
-    public ArticleRepository(MasterBlogContext context)
+    public ArticleRepository(MasterBlogContext context) : base(context)
     {
         this.context = context;
     }
 
-    public List<ArticleViewModel> GetAll()
+    public List<ArticleViewModel> GetList()
     {
         return context.Articles.Include(x => x.ArticleCategory).Select(x => new ArticleViewModel()
         {
@@ -23,29 +24,6 @@ public class ArticleRepository: IArticleRepository
             IsDeleted = x.IsDeleted,
             ArticleCategory = x.ArticleCategory.Title,
             CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture)
-
-
         }).ToList();
-    }
-
-    public Article Get(int id)
-    {
-        return context.Articles.FirstOrDefault(x => x.Id == id);
-    }
-
-    public void CreateAndSave(Article article)
-    {
-        context.Articles.Add(article);
-        Save();
-    }
-
-    public bool Exists(string title)
-    {
-        return context.Articles.Any(x => x.Title == title);
-    }
-
-    public void Save()
-    {
-        context.SaveChanges();
     }
 }

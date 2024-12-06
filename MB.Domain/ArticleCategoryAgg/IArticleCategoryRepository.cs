@@ -1,14 +1,8 @@
 ﻿using System.Runtime.InteropServices;
+using _01_Framework.Infrastructure;
 
 namespace MB.Domain.ArticleCategoryAgg;
 
-public interface IArticleCategoryRepository
+public interface IArticleCategoryRepository : IRepository<int, ArticleCategory>
 {
-    List<ArticleCategory> GetAll();
-    ArticleCategory Get(int id);
-    void Add(ArticleCategory category);
-    void SaveChanges();
-    void Remove(int id);
-    void Restore(int  id);
-    bool Exists(string title);
 }

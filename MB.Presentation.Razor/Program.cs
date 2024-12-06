@@ -1,10 +1,13 @@
+using _01_Framework.Infrastructure;
 using MB.Application;
 using MB.Application.Contracts.Article;
 using MB.Application.Contracts.ArticleCategory;
+using MB.Application.Contracts.Comment;
 using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleAgg.Services;
 using MB.Domain.ArticleCategoryAgg;
 using MB.Domain.ArticleCategoryAgg.Services;
+using MB.Domain.CommentAgg;
 using MB.Infrastructure.EfCore;
 using MB.Infrastructure.EfCore.Repositories;
 using MB.Infrastructure.Query;
@@ -22,6 +25,9 @@ builder.Services.AddTransient<IArticleApplication, ArticleApplication>();
 builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
 builder.Services.AddTransient<IArticleValidatorService, ArticleValidatorService>();
 builder.Services.AddTransient<IArticleQuery, ArticleQuery>();
+builder.Services.AddTransient<ICommentApplication, CommentApplication>();
+builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("MasterBlogger");
